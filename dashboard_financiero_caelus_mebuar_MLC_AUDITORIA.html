@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<title>Evidencia Financiera - Caelus / Mebuar / MLC</title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#f3f4f6;margin:0;color:#0f172a;}
+.wrap{max-width:1100px;margin:18px auto;padding:16px;background:#ffffff;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,0.12);} 
+h1{font-size:1.4rem;margin:0 0 8px 0;color:#0f172a;}
+.subtitle{font-size:0.85rem;color:#4b5563;margin-bottom:14px;}
+.badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:0.75rem;background:#e0f2fe;color:#1d4ed8;margin-right:4px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:10px 0 16px 0;}
+.card{border-radius:10px;border:1px solid #e5e7eb;padding:10px 12px;background:#f9fafb;}
+.card h3{margin:0 0 4px 0;font-size:0.95rem;color:#1e40af;}
+.card p{margin:2px 0;font-size:0.8rem;}
+.card-critico{border-color:#fecaca;background:#fef2f2;}
+.card-critico h3{color:#b91c1c;}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0 4px 0;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(15,23,42,0.08);}
+thead th{background:#1d4ed8;color:#ffffff;padding:7px 6px;text-align:center;}
+tbody td{padding:6px 6px;border-bottom:1px solid #e5e7eb;text-align:right;background:#ffffff;}
+tbody td:first-child, thead th:first-child{text-align:left;}
+tbody tr:nth-child(even) td{background:#f3f4f6;}
+tfoot td{background:#1d4ed8;color:#ffffff;font-weight:bold;padding:7px 6px;text-align:right;}
+.highlight-green{background:#bbf7d0 !important;color:#166534;font-weight:bold;}
+.highlight-red{background:#fecaca !important;color:#b91c1c;font-weight:bold;}
+.highlight-yellow{background:#fef9c3 !important;color:#854d0e;font-weight:bold;}
+.section-title{margin:22px 0 6px 0;font-size:1rem;color:#1d4ed8;border-left:4px solid #60a5fa;padding-left:8px;}
+.note{font-size:0.8rem;color:#4b5563;margin-top:4px;}
+details{margin-top:6px;margin-bottom:10px;border:1px solid #e5e7eb;border-radius:8px;background:#f9fafb;}
+details > summary{cursor:pointer;padding:6px 10px;font-size:0.8rem;color:#1d4ed8;font-weight:600;list-style:none;}
+details[open] > summary{border-bottom:1px solid #e5e7eb;background:#eff6ff;}
+details > div{padding:6px 10px 10px 10px;}
+canvas{width:100%;height:200px;}
+@media(max-width:768px){.wrap{margin:8px;padding:10px;} h1{font-size:1.15rem;} .cards{grid-template-columns:1fr;}}
+@media print{body{background:#ffffff;}.wrap{box-shadow:none;margin:0;max-width:100%;}details{border:none;}details > summary{background:#ffffff;color:#111827;}canvas{display:none;}}
+</style>
+</head>
+<body>
+<div class='wrap'>
+<h1>Evidencia Financiera - Caelus Motors / Mebuar SpA / Municipalidad de Las Condes</h1>
+<div class='subtitle'>Período analizado: agosto 2022 a julio 2025 (35 meses). Valores expresados en pesos chilenos (CLP).</div>
+<div>
+<span class='badge'>Deuda total estimada Mebuar con Caelus: CLP 410.972.011</span>
+<span class='badge'>Inversión inicial no reembolsada: CLP 243.833.258</span>
+<span class='badge'>Deuda por incumplimiento mensual: CLP 167.138.753</span>
+<span class='badge'>Pagos efectuados por Municipalidad: CLP 520.836.238 (100%)</span>
+</div>
+<div class='cards'>
+<div class='card-critico card'>
+<h3>⚠ Deuda total Mebuar ➜ Caelus</h3>
+<p>Monto total adeudado (sin intereses): <strong>CLP 410.972.011</strong></p>
+<p>Inversión inicial no pagada: CLP 243.833.258</p>
+<p>Deuda por pagos mensuales: CLP 167.138.753</p>
+</div>
+<div class='card'>
+<h3>🏛 Municipalidad de Las Condes ➜ Mebuar</h3>
+<p>Total pagado: <strong>CLP 520.836.238</strong></p>
+<p>Porcentaje de cumplimiento: 100% de lo facturado a Mebuar.</p>
+</div>
+<div class='card'>
+<h3>📅 Alcance temporal</h3>
+<p>Operación: agosto 2022 – julio 2025.</p>
+<p>Base: 35 meses de arriendo y participación en servicios.</p>
+</div>
+</div>
+<div class='section-title'>1️⃣ Evolución anual de facturación, pagos y deuda (Mebuar ➜ Caelus)</div>
+<canvas id='chartAnual'></canvas>
+<div class='note'>Este gráfico compara por año lo facturado por Caelus Motors a Mebuar, lo pagado por éste y la diferencia resultante (deuda). Las barras rojas indican incremento de deuda.</div>
+<table>
+<thead><tr><th>Año</th><th>Facturado Caelus ➜ Mebuar</th><th>Pagado por Mebuar</th><th>Diferencia (deuda año)</th></tr></thead>
+<tbody>
+<tr><td>2022</td><td>CLP 47.950.614</td><td>CLP 35.880.080</td><td class='highlight-red'>CLP -12.070.534</td></tr>
+<tr><td>2023</td><td>CLP 152.073.293</td><td>CLP 98.273.648</td><td class='highlight-red'>CLP -53.799.645</td></tr>
+<tr><td>2024</td><td>CLP 156.433.571</td><td>CLP 104.451.635</td><td class='highlight-red'>CLP -51.981.936</td></tr>
+<tr><td>2025</td><td>CLP 92.020.452</td><td>CLP 42.733.814</td><td class='highlight-red'>CLP -49.286.638</td></tr>
+</tbody>
+<tfoot><tr><td>Total 2022–2025</td><td>CLP 448.477.930</td><td>CLP 281.339.177</td><td class='highlight-red'>CLP -167.138.753</td></tr></tfoot>
+</table>
+<div class='section-title'>2️⃣ Pagos efectuados por Municipalidad de Las Condes ➜ Mebuar</div>
+<table>
+<thead><tr><th>Año</th><th>Total facturado y pagado a Mebuar</th></tr></thead>
+<tbody>
+<tr><td>2022</td><td class='highlight-green'>CLP 55.700.306</td></tr>
+<tr><td>2023</td><td class='highlight-green'>CLP 202.517.270</td></tr>
+<tr><td>2024</td><td class='highlight-green'>CLP 185.420.203</td></tr>
+<tr><td>2025</td><td class='highlight-green'>CLP 77.198.459</td></tr>
+</tbody>
+<tfoot><tr><td>Total 2022–2025</td><td class='highlight-green'>CLP 520.836.238</td></tr></tfoot>
+</table>
+<div class='note'>Se observa que la Municipalidad cumple íntegramente con el pago de todas las facturas emitidas por Mebuar en el período analizado.</div>
+<div class='section-title'>3️⃣ Inversión inicial financiada por Cramick a favor de Caelus Motors</div>
+<p class='note'>Detalle de la inversión inicial realizada por Cramick S.A. para la habilitación de los vehículos, cuya devolución a Caelus Motors no se materializó por parte de Mebuar. Monto total: <strong>CLP 243.833.258</strong>.</p>
+<details>
+<summary>Ver detalle de documentos de inversión inicial</summary>
+<div>
+<table>
+<thead><tr><th>#</th><th>Tipo doc.</th><th>N° documento</th><th>Descripción</th><th>Neto</th><th>IVA</th><th>Total</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Vale Vista</td><td>4962406</td><td>Vale Vista Difor (18) + 18 Facturas </td><td>CLP 163.225.206</td><td>CLP 31.012.789</td><td>CLP 194.237.995</td></tr>
+<tr><td>2</td><td>RG</td><td>173</td><td>Impuesto Verde (18)</td><td>CLP 2.735.406</td><td>CLP 0</td><td>CLP 2.735.406</td></tr>
+<tr><td>3</td><td>RG</td><td>169</td><td>Patente (8)</td><td>CLP 502.880</td><td>CLP 0</td><td>CLP 502.880</td></tr>
+<tr><td>4</td><td>RG</td><td>174</td><td>SOAP (18 )</td><td>CLP 89.820</td><td>CLP 0</td><td>CLP 89.820</td></tr>
+<tr><td>5</td><td>RG</td><td>172</td><td>Sello Verde</td><td>CLP 53.640</td><td>CLP 0</td><td>CLP 53.640</td></tr>
+<tr><td>6</td><td>RG</td><td>171</td><td>Permiso de Circulación</td><td>CLP 1.065.042</td><td>CLP 0</td><td>CLP 1.065.042</td></tr>
+<tr><td>7</td><td>RG</td><td>168</td><td>Rafael Valenzuela (Estacionamiento)</td><td>CLP 6.760</td><td>CLP 0</td><td>CLP 6.760</td></tr>
+<tr><td>8</td><td>RG</td><td>175</td><td>Christian Araya (Poder Notaría)</td><td>CLP 60.000</td><td>CLP 0</td><td>CLP 60.000</td></tr>
+<tr><td>9</td><td>RG</td><td>176</td><td>Christian Araya (Uber)</td><td>CLP 6.147</td><td>CLP 0</td><td>CLP 6.147</td></tr>
+<tr><td>10</td><td>RG</td><td>188</td><td>Christian Araya (Poder Notaría TAG)</td><td>CLP 2.000</td><td>CLP 0</td><td>CLP 2.000</td></tr>
+<tr><td>11</td><td>Factura</td><td>5652064</td><td>Comisión Vale Vista</td><td>CLP 10.036</td><td>CLP 1.097</td><td>CLP 11.943</td></tr>
+<tr><td>12</td><td>Factura</td><td>12530</td><td>Com Luis Alberto (Espejo con cámara)</td><td>CLP 438.655</td><td>CLP 83.344</td><td>CLP 521.999</td></tr>
+<tr><td>13</td><td>Factura</td><td>16464</td><td>Galan Motors SpA (Sensor retroceso - 50% anticipo)</td><td>CLP 720.000</td><td>CLP 136.800</td><td>CLP 856.800</td></tr>
+<tr><td>14</td><td>Factura</td><td>16465</td><td>Galan Motors SpA (Asistencia técnica + mini cámaras - 50% anticipo)</td><td>CLP 990.000</td><td>CLP 188.100</td><td>CLP 1.178.100</td></tr>
+<tr><td>15</td><td>Factura</td><td>4651708</td><td>PC Factory (Memoria cámaras + garantía)</td><td>CLP 75.807</td><td>CLP 14.403</td><td>CLP 90.210</td></tr>
+<tr><td>16</td><td>Factura</td><td>20575</td><td>Comercial AMG (Gráficas Reflex - 30% anticipo)</td><td>CLP 2.700.600</td><td>CLP 513.114</td><td>CLP 3.213.714</td></tr>
+<tr><td>17</td><td>Factura</td><td>414706</td><td>Galan Motors SpA (Asistencia técnica + mini cámaras - 50% final)</td><td>CLP 990.000</td><td>CLP 188.100</td><td>CLP 1.178.100</td></tr>
+<tr><td>18</td><td>Factura</td><td>14705</td><td>Galan Motors SpA (Sensor retroceso - 50% final)</td><td>CLP 720.000</td><td>CLP 136.800</td><td>CLP 856.800</td></tr>
+<tr><td>19</td><td>Factura</td><td>12593</td><td>Com Luis Alberto (Fundas Tap Cuerina + instalación)</td><td>CLP 1.350.450</td><td>CLP 256.586</td><td>CLP 1.607.036</td></tr>
+<tr><td>20</td><td>Factura</td><td>20585</td><td>Galan Motors SpA (Gráficas Reflex - 30% anticipo)</td><td>CLP 2.700.600</td><td>CLP 513.114</td><td>CLP 3.213.714</td></tr>
+<tr><td>21</td><td>Factura</td><td>1259</td><td>Latincor Technologies SpA (Baliza + Instalación - 50% anticipo)</td><td>CLP 9.810.000</td><td>CLP 1.863.900</td><td>CLP 11.673.900</td></tr>
+<tr><td>22</td><td>Factura</td><td>1261</td><td>Latincor Technologies SpA (Baliza + Instalación - 50% final)</td><td>CLP 9.810.000</td><td>CLP 1.863.900</td><td>CLP 11.673.900</td></tr>
+<tr><td>23</td><td>Factura</td><td>894</td><td>Wilmer Miranda (Láminas de seguridad)</td><td>CLP 3.960.000</td><td>CLP 752.400</td><td>CLP 4.712.400</td></tr>
+<tr><td>24</td><td>Factura</td><td>20599</td><td>Comercial AMG (Gráficas Reflex - 40% final)</td><td>CLP 3.600.800</td><td>CLP 684.152</td><td>CLP 4.284.952</td></tr>
+</tbody>
+<tfoot><tr><td colspan='4'>Totales inversión inicial</td><td>CLP 205.623.849</td><td>CLP 38.208.599</td><td class='highlight-red'>CLP 243.833.258</td></tr></tfoot>
+</table>
+</div>
+</details>
+<div class='section-title'>4️⃣ Historial mensual de facturación y pagos (Mebuar ➜ Caelus Motors)</div>
+<p class='note'>Detalle del comportamiento mensual de pago de Mebuar respecto a los cobros de arriendo y participación. Las celdas en rojo muestran meses en que se generó deuda.</p>
+<details>
+<summary>Ver detalle mensual (35 meses)</summary>
+<div>
+<table>
+<thead><tr><th>#</th><th>Año</th><th>Mes</th><th>Facturado</th><th>Pagado</th><th>Diferencia (deuda mes)</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2022</td><td>Septiembre</td><td>CLP 10.607.612</td><td>CLP 11.582.514</td><td class='highlight-green'>CLP 974.902</td></tr>
+<tr><td>2</td><td>2022</td><td>Octubre</td><td>CLP 12.362.047</td><td>CLP 14.620.473</td><td class='highlight-green'>CLP 2.258.426</td></tr>
+<tr><td>3</td><td>2022</td><td>Noviembre </td><td>CLP 12.436.065</td><td>CLP 4.677.093</td><td class='highlight-red'>CLP -7.758.972</td></tr>
+<tr><td>4</td><td>2022</td><td>Diciembre </td><td>CLP 12.544.890</td><td>CLP 5.000.000</td><td class='highlight-red'>CLP -7.544.890</td></tr>
+<tr><td>5</td><td>2023</td><td>Enero </td><td>CLP 12.605.128</td><td>CLP 3.464.574</td><td class='highlight-red'>CLP -9.140.554</td></tr>
+<tr><td>6</td><td>2023</td><td>Febrero </td><td>CLP 12.686.880</td><td>CLP 7.649.275</td><td class='highlight-red'>CLP -5.037.605</td></tr>
+<tr><td>7</td><td>2023</td><td>Marzo</td><td>CLP 12.469.472</td><td>CLP 7.663.449</td><td class='highlight-red'>CLP -4.806.023</td></tr>
+<tr><td>8</td><td>2023</td><td>Abril</td><td>CLP 12.566.668</td><td>CLP 9.094.195</td><td class='highlight-red'>CLP -3.472.473</td></tr>
+<tr><td>9</td><td>2023</td><td>Mayo</td><td>CLP 12.631.428</td><td>CLP 9.080.886</td><td class='highlight-red'>CLP -3.550.542</td></tr>
+<tr><td>10</td><td>2023</td><td>Junio</td><td>CLP 12.650.463</td><td>CLP 9.095.148</td><td class='highlight-red'>CLP -3.555.315</td></tr>
+<tr><td>11</td><td>2023</td><td>Julio</td><td>CLP 12.635.055</td><td>CLP 8.646.391</td><td class='highlight-red'>CLP -3.988.664</td></tr>
+<tr><td>12</td><td>2023</td><td>Agosto</td><td>CLP 12.665.989</td><td>CLP 8.665.880</td><td class='highlight-red'>CLP -4.000.109</td></tr>
+<tr><td>13</td><td>2023</td><td>Septiembre</td><td>CLP 12.688.337</td><td>CLP 8.682.003</td><td class='highlight-red'>CLP -4.006.334</td></tr>
+<tr><td>14</td><td>2023</td><td>Octubre</td><td>CLP 12.757.574</td><td>CLP 8.727.704</td><td class='highlight-red'>CLP -4.029.870</td></tr>
+<tr><td>15</td><td>2023</td><td>Noviembre</td><td>CLP 12.818.033</td><td>CLP 8.680.189</td><td class='highlight-red'>CLP -4.137.844</td></tr>
+<tr><td>16</td><td>2023</td><td>Diciembre</td><td>CLP 12.898.266</td><td>CLP 8.823.954</td><td class='highlight-red'>CLP -4.074.312</td></tr>
+<tr><td>17</td><td>2024</td><td>Enero </td><td>CLP 12.873.540</td><td>CLP 8.810.446</td><td class='highlight-red'>CLP -4.063.094</td></tr>
+<tr><td>18</td><td>2024</td><td>Febrero </td><td>CLP 12.922.006</td><td>CLP 8.840.058</td><td class='highlight-red'>CLP -4.081.948</td></tr>
+<tr><td>19</td><td>2024</td><td>Marzo</td><td>CLP 13.004.487</td><td>CLP 8.796.940</td><td class='highlight-red'>CLP -4.207.547</td></tr>
+<tr><td>20</td><td>2024</td><td>Abril</td><td>CLP 13.062.764</td><td>CLP 8.836.892</td><td class='highlight-red'>CLP -4.225.872</td></tr>
+<tr><td>21</td><td>2024</td><td>Mayo</td><td>CLP 13.125.157</td><td>CLP 7.562.264</td><td class='highlight-red'>CLP -5.562.893</td></tr>
+<tr><td>22</td><td>2024</td><td>Junio</td><td>CLP 12.942.921</td><td>CLP 7.562.023</td><td class='highlight-red'>CLP -5.380.898</td></tr>
+<tr><td>23</td><td>2024</td><td>Julio</td><td>CLP 12.943.655</td><td>CLP 8.912.062</td><td class='highlight-red'>CLP -4.031.593</td></tr>
+<tr><td>24</td><td>2024</td><td>Agosto</td><td>CLP 13.007.457</td><td>CLP 8.953.688</td><td class='highlight-red'>CLP -4.053.769</td></tr>
+<tr><td>25</td><td>2024</td><td>Septiembre</td><td>CLP 13.059.548</td><td>CLP 8.990.673</td><td class='highlight-red'>CLP -4.068.875</td></tr>
+<tr><td>26</td><td>2024</td><td>Octubre</td><td>CLP 13.079.682</td><td>CLP 9.005.139</td><td class='highlight-red'>CLP -4.074.543</td></tr>
+<tr><td>27</td><td>2024</td><td>Noviembre</td><td>CLP 13.178.870</td><td>CLP 9.070.713</td><td class='highlight-red'>CLP -4.108.157</td></tr>
+<tr><td>28</td><td>2024</td><td>Diciembre</td><td>CLP 13.233.484</td><td>CLP 9.110.737</td><td class='highlight-red'>CLP -4.122.747</td></tr>
+<tr><td>29</td><td>2025</td><td>Enero</td><td>CLP 13.220.658</td><td>CLP 9.103.082</td><td class='highlight-red'>CLP -4.117.576</td></tr>
+<tr><td>30</td><td>2025</td><td>Febrero</td><td>CLP 13.082.851</td><td>CLP 9.165.580</td><td class='highlight-red'>CLP -3.917.271</td></tr>
+<tr><td>31</td><td>2025</td><td>Marzo</td><td>CLP 13.162.733</td><td>CLP 6.890.512</td><td class='highlight-red'>CLP -6.272.221</td></tr>
+<tr><td>32</td><td>2025</td><td>Abril</td><td>CLP 13.224.583</td><td>CLP 5.978.408</td><td class='highlight-red'>CLP -7.246.175</td></tr>
+<tr><td>33</td><td>2025</td><td>Mayo</td><td>CLP 13.261.828</td><td>CLP 5.500.233</td><td class='highlight-red'>CLP -7.761.595</td></tr>
+<tr><td>34</td><td>2025</td><td>Junio</td><td>CLP 13.049.807</td><td>CLP 6.095.999</td><td class='highlight-red'>CLP -6.953.808</td></tr>
+<tr><td>35</td><td>2025</td><td>Julio</td><td>CLP 13.017.992</td><td>CLP 0</td><td class='highlight-red'>CLP -13.017.992</td></tr>
+</tbody>
+<tfoot><tr><td colspan='3'>Totales 35 meses</td><td>CLP 448.477.930</td><td>CLP 281.339.177</td><td class='highlight-red'>CLP -167.138.753</td></tr></tfoot>
+</table>
+</div>
+</details>
+<div class='section-title'>5️⃣ Facturación y pagos Municipalidad ➜ Mebuar</div>
+<p class='note'>Tabla de las facturas emitidas por Mebuar a la Municipalidad de Las Condes. Puede utilizarse como respaldo de los pagos efectivamente realizados por el municipio.</p>
+<details>
+<summary>Ver detalle de facturas (38 registros)</summary>
+<div>
+<table>
+<thead><tr><th>#</th><th>Factura</th><th>Mes</th><th>Año</th><th>Vehículos</th><th>Neto_CLP</th><th>IVA_CLP</th><th>Total_CLP</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>246</td><td>Septiembre</td><td>2022</td><td>18</td><td>CLP 12.720.348</td><td>CLP 2.416.866</td><td>CLP 15.137.214</td></tr>
+<tr><td>2</td><td>248</td><td>Octubre</td><td>2022</td><td>16</td><td>CLP 12.286.112</td><td>CLP 2.334.361</td><td>CLP 14.620.473</td></tr>
+<tr><td>3</td><td>252</td><td>Noviembre</td><td>2022</td><td>14</td><td>CLP 10.853.612</td><td>CLP 2.062.186</td><td>CLP 12.915.798</td></tr>
+<tr><td>4</td><td>255</td><td>Diciembre</td><td>2022</td><td>14</td><td>CLP 10.946.908</td><td>CLP 2.079.913</td><td>CLP 13.026.821</td></tr>
+<tr><td>5</td><td>261</td><td>Enero</td><td>2023</td><td>14</td><td>CLP 13.285.622</td><td>CLP 2.524.268</td><td>CLP 15.809.890</td></tr>
+<tr><td>6</td><td>267</td><td>Febrero</td><td>2023</td><td>14</td><td>CLP 13.367.970</td><td>CLP 2.539.914</td><td>CLP 15.907.884</td></tr>
+<tr><td>7</td><td>279</td><td>Marzo</td><td>2023</td><td>14</td><td>CLP 13.397.720</td><td>CLP 2.545.567</td><td>CLP 15.943.287</td></tr>
+<tr><td>8</td><td>283</td><td>Abril</td><td>2023</td><td>14</td><td>CLP 13.496.798</td><td>CLP 2.564.392</td><td>CLP 16.061.190</td></tr>
+<tr><td>9</td><td>286</td><td>Abril</td><td>2023</td><td>16</td><td>CLP 2.654.912</td><td>CLP 504.433</td><td>CLP 3.159.345</td></tr>
+<tr><td>10</td><td>292</td><td>Mayo</td><td>2023</td><td>14</td><td>CLP 13.569.990</td><td>CLP 2.578.298</td><td>CLP 16.148.288</td></tr>
+<tr><td>11</td><td>297</td><td>Mayo</td><td>2023</td><td>14</td><td>CLP 2.335.648</td><td>CLP 443.773</td><td>CLP 2.779.421</td></tr>
+<tr><td>12</td><td>306</td><td>Junio</td><td>2023</td><td>14</td><td>CLP 13.591.298</td><td>CLP 2.582.347</td><td>CLP 16.173.645</td></tr>
+<tr><td>13</td><td>309</td><td>Junio</td><td>2023</td><td>14</td><td>CLP 2.339.316</td><td>CLP 444.470</td><td>CLP 2.783.786</td></tr>
+<tr><td>14</td><td>315</td><td>Julio</td><td>2023</td><td>14</td><td>CLP 13.576.066</td><td>CLP 2.579.453</td><td>CLP 16.155.519</td></tr>
+<tr><td>15</td><td>326</td><td>Agosto</td><td>2023</td><td>14</td><td>CLP 13.606.670</td><td>CLP 2.585.267</td><td>CLP 16.191.937</td></tr>
+<tr><td>16</td><td>336</td><td>Septiembre</td><td>2023</td><td>14</td><td>CLP 13.631.996</td><td>CLP 2.590.079</td><td>CLP 16.222.075</td></tr>
+<tr><td>17</td><td>345</td><td>Octubre</td><td>2023</td><td>14</td><td>CLP 13.703.746</td><td>CLP 2.603.712</td><td>CLP 16.307.458</td></tr>
+<tr><td>18</td><td>356</td><td>Noviembre</td><td>2023</td><td>14</td><td>CLP 13.769.952</td><td>CLP 2.616.291</td><td>CLP 16.386.243</td></tr>
+<tr><td>19</td><td>362</td><td>Diciembre</td><td>2023</td><td>14</td><td>CLP 13.854.876</td><td>CLP 2.632.426</td><td>CLP 16.487.302</td></tr>
+<tr><td>20</td><td>368</td><td>Enero</td><td>2024</td><td>14</td><td>CLP 13.833.666</td><td>CLP 2.628.397</td><td>CLP 16.462.063</td></tr>
+<tr><td>21</td><td>375</td><td>Febrero</td><td>2024</td><td>14</td><td>CLP 13.880.160</td><td>CLP 2.637.230</td><td>CLP 16.517.390</td></tr>
+<tr><td>22</td><td>-</td><td>Marzo</td><td>2024</td><td>-</td><td>CLP 0</td><td>CLP 0</td><td>CLP 0</td></tr>
+<tr><td>23</td><td>389</td><td>Abril</td><td>2024</td><td>14</td><td>CLP 14.032.858</td><td>CLP 2.666.243</td><td>CLP 16.699.101</td></tr>
+<tr><td>24</td><td>395</td><td>Mayo</td><td>2024</td><td>14</td><td>CLP 14.099.498</td><td>CLP 2.678.905</td><td>CLP 16.778.403</td></tr>
+<tr><td>25</td><td>402</td><td>Junio</td><td>2024</td><td>14</td><td>CLP 14.149.562</td><td>CLP 2.688.417</td><td>CLP 16.837.979</td></tr>
+<tr><td>26</td><td>408</td><td>Julio</td><td>2024</td><td>14</td><td>CLP 14.152.236</td><td>CLP 2.688.925</td><td>CLP 16.841.161</td></tr>
+<tr><td>27</td><td>414</td><td>Agosto</td><td>2024</td><td>14</td><td>CLP 14.218.330</td><td>CLP 2.701.483</td><td>CLP 16.919.813</td></tr>
+<tr><td>28</td><td>420</td><td>Septiembre</td><td>2024</td><td>14</td><td>CLP 14.277.060</td><td>CLP 2.712.641</td><td>CLP 16.989.701</td></tr>
+<tr><td>29</td><td>426</td><td>Octubre</td><td>2024</td><td>14</td><td>CLP 14.300.034</td><td>CLP 2.717.006</td><td>CLP 17.017.040</td></tr>
+<tr><td>30</td><td>432</td><td>Noviembre</td><td>2024</td><td>14</td><td>CLP 14.404.166</td><td>CLP 2.736.792</td><td>CLP 17.140.958</td></tr>
+<tr><td>31</td><td>438</td><td>Diciembre</td><td>2024</td><td>14</td><td>CLP 14.467.726</td><td>CLP 2.748.868</td><td>CLP 17.216.594</td></tr>
+<tr><td>32</td><td>450</td><td>Enero</td><td>2025</td><td>14</td><td>CLP 14.455.574</td><td>CLP 2.746.559</td><td>CLP 17.202.133</td></tr>
+<tr><td>33</td><td>452</td><td>Febrero</td><td>2025</td><td>14</td><td>CLP 14.554.820</td><td>CLP 2.765.416</td><td>CLP 17.320.236</td></tr>
+<tr><td>36</td><td>474</td><td>Mayo</td><td>2025</td><td>11</td><td>CLP 11.596.156</td><td>CLP 2.203.270</td><td>CLP 13.799.426</td></tr>
+<tr><td>37</td><td>481</td><td>Junio</td><td>2025</td><td>11</td><td>CLP 11.619.124</td><td>CLP 2.207.634</td><td>CLP 13.826.758</td></tr>
+<tr><td>38</td><td>491</td><td>Julio</td><td>2025</td><td>12</td><td>CLP 12.646.980</td><td>CLP 2.402.926</td><td>CLP 15.049.906</td></tr>
+</tbody>
+<tfoot><tr><td colspan='5'>Totales general</td><td>CLP 437.677.510</td><td>CLP 83.158.728</td><td class='highlight-green'>CLP 520.836.238</td></tr></tfoot>
+</table>
+</div>
+</details>
+<div class='section-title'>6️⃣ Síntesis para uso legal / auditoría</div>
+<ul class='note'><li>La Municipalidad de Las Condes cumplió íntegramente con los pagos a Mebuar por un total de <strong>CLP 520.836.238</strong>.</li><li>Mebuar no restituyó a Caelus Motors la inversión inicial financiada por Cramick S.A., equivalente a <strong>CLP 243.833.258</strong>.</li><li>El análisis de los 35 meses de operación evidencia una deuda adicional por incumplimiento de pagos mensuales de <strong>CLP 167.138.753</strong>.</li><li>La deuda total estimada de Mebuar con Caelus Motors (sin considerar intereses, reajustes ni daños emergentes) asciende a <strong>CLP 410.972.011</strong>.</li><li>El presente dashboard consolida antecedentes útiles para acciones civiles, penales, administrativas o tributarias.</li></ul>
+<script>
+const chartYears = [2022, 2023, 2024, 2025];
+const chartFact = [47950614.0, 152073293.0, 156433571.0, 92020452.0];
+const chartPag = [35880080.0, 98273648.0, 104451635.0, 42733814.0];
+const chartDif = [-12070534.0, -53799645.0, -51981936.0, -49286638.0];
+
+function drawBarChart(){
+  const canvas = document.getElementById('chartAnual');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  const width = rect.width;
+  const height = rect.height;
+  ctx.clearRect(0,0,width,height);
+  const padding = {top:10,right:10,bottom:30,left:35};
+  const chartW = width - padding.left - padding.right;
+  const chartH = height - padding.top - padding.bottom;
+  const values = chartFact.concat(chartPag).concat(chartDif.map(v=>Math.abs(v)));
+  const maxVal = Math.max(...values) * 1.15;
+  const nYears = chartYears.length;
+  const groupWidth = chartW / nYears;
+  const barWidth = groupWidth / 4;
+  ctx.font = '11px Segoe UI';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for(let i=0;i<nYears;i++){
+    const baseX = padding.left + i*groupWidth + groupWidth/2;
+    const x1 = baseX - barWidth*1.1;
+    const x2 = baseX;
+    const x3 = baseX + barWidth*1.1;
+    const vals = [chartFact[i], chartPag[i], Math.abs(chartDif[i])];
+    const colors = ['#1d4ed8','#16a34a','#ef4444'];
+    const xs = [x1,x2,x3];
+    for(let j=0;j<3;j++){
+      const v = vals[j];
+      const h = (v / maxVal) * chartH;
+      const y = padding.top + (chartH - h);
+      ctx.fillStyle = colors[j];
+      if(ctx.roundRect){
+        ctx.beginPath();
+        ctx.roundRect(xs[j] - barWidth/2, y, barWidth, h, 3);
+        ctx.fill();
+      } else {
+        ctx.fillRect(xs[j] - barWidth/2, y, barWidth, h);
+      }
+    }
+    ctx.fillStyle = '#0f172a';
+    ctx.fillText(chartYears[i], baseX, padding.top + chartH + 4);
+  }
+  ctx.font = '10px Segoe UI';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  const legendY = padding.top;
+  ctx.fillStyle = '#1d4ed8'; ctx.fillRect(width-130, legendY, 10, 10); ctx.fillStyle='#0f172a'; ctx.fillText('Facturado', width-115, legendY+1);
+  ctx.fillStyle = '#16a34a'; ctx.fillRect(width-130, legendY+14, 10, 10); ctx.fillStyle='#0f172a'; ctx.fillText('Pagado', width-115, legendY+15);
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(width-130, legendY+28, 10, 10); ctx.fillStyle='#0f172a'; ctx.fillText('Deuda', width-115, legendY+29);
+}
+window.addEventListener('load', drawBarChart);
+window.addEventListener('resize', drawBarChart);
+</script>
+</div>
+</body>
+</html>
